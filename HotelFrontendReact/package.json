@@ -1,0 +1,28 @@
+{
+  "name": "springhotelfrontend",
+  "version": "1.0.0",
+  "description": "Frontend for Spring Hotels",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dariusz Kalicinski",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "bootstrap": "^3.3.7",
+    "browserify": "^15.0.0",
+    "create-react-class": "^15.6.2",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.2.0",
+    "gulp-eslint": "^4.0.1",
+    "gulp-open": "^2.1.0",
+    "jquery": "^3.2.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router": "^4.2.0",
+    "reactify": "^1.1.1",
+    "vinyl-source-stream": "^2.0.0"
+  }
+}
