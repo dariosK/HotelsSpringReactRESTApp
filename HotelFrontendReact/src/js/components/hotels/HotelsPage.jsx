@@ -2,10 +2,10 @@
 
 //import libraries we need
 var React = require('react');
-var ReactDOM = require('react-dom');
 var createClass = require('create-react-class');
 var axios = require('axios');
 var HotelsApi = require('../../../api/HotelsApi');
+var HotelsList = require('./HotelsList.jsx');
 
 //create a 'About' component
 var Hotels = createClass({
@@ -18,6 +18,14 @@ var Hotels = createClass({
 	},
 	
 	componentDidMount: function() {
+			if (this.isMounted()) {
+				HotelsApi.getAllHotels()
+				.then(response => {
+					console.log("will", response);
+					this.setState({
+					hotels: response.repos.data
+				})
+			})};
 			/*
 			axios.get('http://localhost:8080/hotels/all', { crossdomain: true })
 			.then(response => {
@@ -30,6 +38,7 @@ var Hotels = createClass({
 			})
 			*/			
 	},
+	/* //fetch by Did after change constructs of Hotels builds by components
 	componentWillMount: function() {
 		HotelsApi.getAllHotels()
 		.then(response => {
@@ -40,6 +49,7 @@ var Hotels = createClass({
 		});
 
 	},
+	*/
 	
 	/*
 	componentWillUnmount: function() {
@@ -48,30 +58,12 @@ var Hotels = createClass({
 	*/
 	
 	render: function() {
-		//this is a function that we can use to create the row data
-		var createHotelRow = function(hotel) {
-			return (
-				<tr key={hotel.id}>
-					<td><a href={"/#hotel/" + hotel.id}>{hotel.address.country}</a></td>
-					<td><a href={"/#hotel/" + hotel.id}>{hotel.name}</a></td>
-				</tr>
-			)
-		};
+
 
 		return (
 			<div>
 				<h1>Our Hotels</h1>
-				<table className="table table-hover">
-					<thead>
-						<th>Country</th>
-						<th>Hotel Name</th>
-					</thead>
-				
-					<tbody>
-				
-						{this.state.hotels.map(createHotelRow, this)}
-					</tbody>
-				</table>
+				<HotelsList hotels = {this.state.hotels} />
 			</div>
 		);
 	}
